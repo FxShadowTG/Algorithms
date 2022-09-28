@@ -1,17 +1,31 @@
 class Solution {
     public int lengthOfLongestSubstring(String s) {
+
+        //双指针-滑动窗口思路
+
+        //初始化start指针和end指针以及长度
         int start = 0, end = 0, length = 0;
+        //初始化一个set集合（set集合特性：没有重复值）
         HashSet<Character> set = new HashSet<>();
 
+        //end指针没到尾部时
         while(end < s.length()){
+            //如果set集合中不包含end指针所在的字符
             if(!set.contains(s.charAt(end))){
+                //往set集合中添加end指针所指的字符
                 set.add(s.charAt(end));
+                //end指针往前移动
                 end++;
-            }else{
+            }
+            //否则
+            else{
+                //从set集合中删除start指针所指的字符
                 set.remove(s.charAt(start));
+                //start指针往前移动
                 start++;
             }
 
+            //获取最优长度
             length = Math.max(length,set.size());
         }
         return length;
