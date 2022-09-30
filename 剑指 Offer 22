@@ -1,0 +1,30 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode getKthFromEnd(ListNode head, int k) {
+        ListNode fastNode = head, slowNode = head;
+
+        //思路：先让快指针走k步然后快慢指针一起走，等快指针到尾后，慢指针就是倒数第k个结点
+
+        //1.让快指针走k步
+        while(k > 0 && fastNode != null){
+            fastNode = fastNode.next;
+            k--;
+        }
+
+        //2.一起走
+        while(fastNode != null){
+            fastNode = fastNode.next;
+            slowNode = slowNode.next;
+        }
+
+        //3.最后返回慢指针
+        return slowNode;
+    }
+}
