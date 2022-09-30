@@ -1,0 +1,13 @@
+class Solution {
+    public char repeatedCharacter(String s) {
+        HashSet<Character> set = new HashSet<>();
+
+        //思路：利用Set特性，如果不能再添加了说明已经出现过字母，直接返回这个字母即可
+        for(int i = 0; i < s.length(); i++){
+            if(!set.add(s.charAt(i))){
+                return s.charAt(i);
+            }
+        }
+        return 0;
+    }
+}
