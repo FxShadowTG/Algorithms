@@ -1,0 +1,20 @@
+class Solution {
+    public int countAsterisks(String s) {
+        int count = 0;
+        char c = ' ';
+        int num = 0;
+
+        //竖线为偶数个数的时候，统计*号即可
+        for(int i = 0 ;i < s.length(); i++){
+            c = s.charAt(i);
+            if(c == '|'){
+                num++;
+            }
+
+            if(c == '*' && num % 2 == 0){
+                count++;
+            }
+        }
+        return count;
+    }
+}
